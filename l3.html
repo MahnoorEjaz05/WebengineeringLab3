@@ -9,48 +9,118 @@
 <body>
     <h1>Student Profile Page</h1>
     <p>Wellcome............This is our student profile page</p>
-    <table>
+    <table id="studentCourses" class="courses">
+        <thead>
         <tr>
-            <th>Course Id</th>
+            <th>Course #</th>
             <th>Course Name</th>
             <th>Credit Hours</th>
             <th>Year Taken</th>
         </tr>
-        <tr>
+    </thead>
+    <tbody>
+        <tr id="ITC" class="row">
             <td>CS101</td>
             <td>ITC</td>
             <td>03</td>
             <td>2020</td>
         </tr>
-        <tr>
+        <tr id="PF" class="row">
             <td>CS102</td>
             <td>PF</td>
             <td>03</td>
             <td>2020</td>
         </tr>
-        <tr>
+        <tr id="COA" class="row">
             <td>CS103</td>
             <td>COA</td>
             <td>03</td>
             <td>2021</td>
         </tr>
-        <tr>
+        <tr id="LADE" class="row">
             <td>CS104</td>
             <td>LADE</td>
             <td>02</td>
             <td>2021</td>
         </tr>
+    </tbody>
     </table>
     <div>
-        <input type="button" value="Search" onclick="searchitem()">
-        <input type="button" value="Add New Course" onclick="Addnew()">
-        <input type="button" value="Update Course" onclick="upd()">
-        <input type="button" value="Remove Course" onclick="remcour()">
+        <input id='search' type="button" value="Search" >
+        <input id='addnew' type="button" value="Add New Course" onclick="Addnew()">
+        <input id='upd' type="button" value="Update Course" onclick="upd()">
+        <input id="remcour" type="button" value="Remove Course" onclick="remcour()">
     </div>
     <section>
         <p><a href="https://www.ssuet.edu.pk/">SSUET home page</a></p>
         <p><a href="https://www.ssuet.edu.pk/#">SSUET student scholarships notice</a></p>
         <p><a href="https://www.ssuet.edu.pk/news-events/">SSUET news and events Calendar page</a></p>
     </section>
+    <script>
+        const btnsearch = document.getElementById('search');
+        const btnadd = document.getElementById('addnew');
+        const btnupd = document.getElementById('upd');
+        const btnrem = document.getElementById('remcour');
+
+        btnsearch.addEventListener('click',function(event)
+        {
+          const courseId = window.prompt('Please enter CourseId and Course Name');
+          const a=("#"+courseId)
+          console.log(courseId)
+          if (courseId)
+          {
+            const r=document.getElementById(courseId);
+            if(r)
+            {
+            const course = document.querySelector(a);
+            course.style.backgroundColor='aqua';
+            
+            
+            }
+          }
+        })
+function Addnew(){
+const body = document.querySelector('tbody');
+const row = document.createElement('tr');
+const tdCourseID = document.createElement('td');
+const tdCourseName = document.createElement('td');
+const tdcreditHours = document.createElement('td');
+const tdYearTaken = document.createElement('td');
+const courseId = window.prompt("Enter Course Id");
+const courseName =window.prompt("Enter CourseName")
+const yearTaken =window.prompt("Enter Year Taken")
+const creditHours =window.prompt("Enter Credit Hours")
+row.id = courseName;
+tdCourseID.innerHTML =courseId;
+tdCourseName.innerHTML =courseName;
+tdcreditHours.innerHTML=creditHours;
+tdYearTaken.innerHTML = yearTaken;
+row.appendChild(tdCourseID)
+row.appendChild(tdCourseName);
+row.appendChild(tdcreditHours);
+row.appendChild(tdYearTaken);
+body.appendChild(row);
+}
+
+function remcour(){
+const courseName = prompt('Please Enter Course Name:');
+if(courseName){
+document.getElementById(courseName).remove();
+}
+}
+
+function upd(){
+const newCourseYear = prompt('Please enter Course Name and new year delimited by comma');
+if(newCourseYear){
+const courseId = newCourseYear.split(',')[0];
+const courseYear = newCourseYear.split(',')[1];
+const row = document.getElementById(courseId);
+if(row){
+const tdYearTaken = row.querySelector('#' + courseId + ' > td:nth-child(4)');
+tdYearTaken.innerHTML = courseYear;
+}
+}
+}
+    </script>
 </body>
 </html>
