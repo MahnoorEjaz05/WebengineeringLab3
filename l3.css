@@ -1,0 +1,30 @@
+.button {
+    background-color: #043eaa;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width:auto;
+  }
+  
+  .button:hover {
+    opacity: 0.8;
+  }
+  .container {
+    background-color: #fefefecb;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+    padding:30px;
+  }
+  body
+  {
+    background-image: url("background.jpg");
+  }
+
+  table, th, td {
+    border: 1px solid;
+    padding:10px;
+  }
+  
